@@ -4,9 +4,10 @@
 /* @var $form CActiveForm  */
 
 $this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
+echo TbHtml::breadcrumbs(array(
+	'Home' => Yii::app()->baseUrl,
 	'Login',
-);
+));
 ?>
 
 <h1>Login</h1>

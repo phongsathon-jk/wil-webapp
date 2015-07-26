@@ -2,9 +2,10 @@
 /* @var $this SiteController */
 
 $this->pageTitle=Yii::app()->name . ' - About';
-$this->breadcrumbs=array(
+echo TbHtml::breadcrumbs(array(
+	'Home' => Yii::app()->baseUrl,
 	'About',
-);
+));
 ?>
 <h1>About</h1>
 

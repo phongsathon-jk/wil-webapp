@@ -4,9 +4,11 @@
 /* @var $form CActiveForm */
 
 $this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
+
+echo TbHtml::breadcrumbs(array(
+	'Home' => Yii::app()->baseUrl,
 	'Contact',
-);
+));
 ?>
 
 <h1>Contact Us</h1>
