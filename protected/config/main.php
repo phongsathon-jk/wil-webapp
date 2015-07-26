@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'SeeCM - WIL Webapp',
+	'name'=>'SeeM - WIL Webapp',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
