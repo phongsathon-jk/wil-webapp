@@ -25,6 +25,24 @@ class ApiController extends Controller {
         echo json_encode($rows);
     }
 
+    public function actionView($id) {
+        // get places
+        $places = Place::model()->findAllByAttributes(array('id' => $id));
+        $rows = array();
+        foreach($places as $place) {
+            $rows[] = array(
+                'id' => $place->id,
+                'type' => $place->type,
+                'name' => $place->name,
+                'detail' => $place->detail,
+                'pic' => $place->pic,
+                'comments' => $this->getComments($place->id)
+            );
+        }
+        // Send the response
+        echo json_encode($rows);
+    }
+
     public function actionSearch($keyword) {
         // get the data
         $keyword = addcslashes($keyword, '%_'); // escape LIKE's special characters
@@ -60,5 +78,18 @@ class ApiController extends Controller {
             );
         }
         return $data;
+    }
+
+    public function actionComment() {
+        $paramPlaceID = $_POST['place_id'];
+        $paramComment = $_POST['comment'];
+        $newComment = new Comment();
+        $newComment->place_id = $paramPlaceID;
+        $newComment->comment_text = $paramComment;
+
+        if($newComment->save()) {
+            echo "Your comment has been recorded.";
+        }
+
     }
 }
