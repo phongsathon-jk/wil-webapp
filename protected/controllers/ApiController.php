@@ -11,13 +11,13 @@ class ApiController extends Controller {
         // get the data
         $places = Place::model()->findAll();
         $rows = array();
-        foreach($places as $model) {
+        foreach($places as $place) {
             $rows[] = array(
-                'id' => $model->id,
-                'type' => $model->type,
-                'name' => $model->name,
-                'detail' => $model->detail,
-                'pic' => $model->pic,
+                'id' => $place->id,
+                'type' => $place->type,
+                'name' => $place->name,
+                'detail' => $place->detail,
+                'pic' => $place->pic
             );
         }
         // Send the response
@@ -34,13 +34,13 @@ class ApiController extends Controller {
 
         $places = Place::model()->findAll($q);
         $rows = array();
-        foreach($places as $model) {
+        foreach($places as $place) {
             $rows[] = array(
-                'id' => $model->id,
-                'type' => $model->type,
-                'name' => $model->name,
-                'detail' => $model->detail,
-                'pic' => $model->pic,
+                'id' => $place->id,
+                'type' => $place->type,
+                'name' => $place->name,
+                'detail' => $place->detail,
+                'pic' => $place->pic,
             );
         }
         // Send the response
