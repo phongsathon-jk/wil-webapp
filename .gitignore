@@ -1,2 +1,4 @@
 .idea/
 assets/
+index.php
+protected/config/database.php
