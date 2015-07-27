@@ -8,16 +8,28 @@ class ApiController extends Controller {
 
     // Actions
     public function actionList() {
-        // get the data
+        // get places
         $places = Place::model()->findAll();
         $rows = array();
         foreach($places as $place) {
+            // get comments
+            $comments = Comment::model()->findAllByAttributes(array('place_id' => $place->id));
+            $data = array();
+            foreach($comments as $comment) {
+                $data[] = array(
+                    'id' => $comment->id,
+                    'place_id' => $comment->place_id,
+                    'comment_text' => $comment->comment_text
+                );
+            }
+
             $rows[] = array(
                 'id' => $place->id,
                 'type' => $place->type,
                 'name' => $place->name,
                 'detail' => $place->detail,
-                'pic' => $place->pic
+                'pic' => $place->pic,
+                'comments' => $data
             );
         }
         // Send the response
@@ -35,12 +47,24 @@ class ApiController extends Controller {
         $places = Place::model()->findAll($q);
         $rows = array();
         foreach($places as $place) {
+            // get comments
+            $comments = Comment::model()->findAllByAttributes(array('place_id' => $place->id));
+            $data = array();
+            foreach($comments as $comment) {
+                $data[] = array(
+                    'id' => $comment->id,
+                    'place_id' => $comment->place_id,
+                    'comment_text' => $comment->comment_text
+                );
+            }
+
             $rows[] = array(
                 'id' => $place->id,
                 'type' => $place->type,
                 'name' => $place->name,
                 'detail' => $place->detail,
                 'pic' => $place->pic,
+                'comments' => $data
             );
         }
         // Send the response
