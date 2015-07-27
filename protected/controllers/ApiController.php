@@ -12,24 +12,13 @@ class ApiController extends Controller {
         $places = Place::model()->findAll();
         $rows = array();
         foreach($places as $place) {
-            // get comments
-            $comments = Comment::model()->findAllByAttributes(array('place_id' => $place->id));
-            $data = array();
-            foreach($comments as $comment) {
-                $data[] = array(
-                    'id' => $comment->id,
-                    'place_id' => $comment->place_id,
-                    'comment_text' => $comment->comment_text
-                );
-            }
-
             $rows[] = array(
                 'id' => $place->id,
                 'type' => $place->type,
                 'name' => $place->name,
                 'detail' => $place->detail,
                 'pic' => $place->pic,
-                'comments' => $data
+                'comments' => $this->getComments($place->id)
             );
         }
         // Send the response
@@ -47,27 +36,29 @@ class ApiController extends Controller {
         $places = Place::model()->findAll($q);
         $rows = array();
         foreach($places as $place) {
-            // get comments
-            $comments = Comment::model()->findAllByAttributes(array('place_id' => $place->id));
-            $data = array();
-            foreach($comments as $comment) {
-                $data[] = array(
-                    'id' => $comment->id,
-                    'place_id' => $comment->place_id,
-                    'comment_text' => $comment->comment_text
-                );
-            }
-
             $rows[] = array(
                 'id' => $place->id,
                 'type' => $place->type,
                 'name' => $place->name,
                 'detail' => $place->detail,
                 'pic' => $place->pic,
-                'comments' => $data
+                'comments' => $this->getComments($place->id)
             );
         }
         // Send the response
         echo json_encode($rows);
+    }
+
+    public function getComments($place_id) {
+        $comments = Comment::model()->findAllByAttributes(array('place_id' => $place_id));
+        $data = array();
+        foreach($comments as $comment) {
+            $data[] = array(
+                'id' => $comment->id,
+                'place_id' => $comment->place_id,
+                'comment_text' => $comment->comment_text
+            );
+        }
+        return $data;
     }
 }
