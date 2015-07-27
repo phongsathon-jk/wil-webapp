@@ -1,5 +1,5 @@
 <?php
-
+//
 // This is the database connection configuration.
 return array(
 	'connectionString' => 'mysql:host=localhost;dbname=wil_webapp',
