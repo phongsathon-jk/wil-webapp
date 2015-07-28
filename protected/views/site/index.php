@@ -16,7 +16,7 @@ $this->pageTitle=Yii::app()->name;
 		</div>
 		<div class="row">
 			<div class="col-md-12" style="text-align: center;">
-				<a href="#">check-out the restaurants</a>
+				<a href="<?php echo Yii::app()->request->url; ?>restaurant">check-out the restaurants</a>
 			</div>
 		</div>
 	</div>
