@@ -87,8 +87,13 @@ class ApiController extends Controller {
         $newComment->place_id = $paramPlaceID;
         $newComment->comment_text = $paramComment;
 
+        $arr = array(
+            'place_id' => $newComment->place_id,
+            'comment_text' => $newComment->comment_text
+        );
+
         if($newComment->save()) {
-            echo "Your comment has been recorded.";
+            echo json_encode($arr);
         }
 
     }

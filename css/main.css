@@ -1,3 +1,7 @@
+a > label {
+	cursor: pointer;
+}
+
 .img-center {
 	display: block;
 	margin-left: auto;
