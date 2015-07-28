@@ -23,10 +23,11 @@ $this->pageTitle=Yii::app()->name;
 </div>
 
 <div class="row">
-	<div class="col-md-2" id="twitter">
-		twitter api
+	<div class="col-md-3" id="twitter">
+		<a class="twitter-timeline" href="https://twitter.com/search?q=chiangmai" data-widget-id="625924898360176640">Tweets about Chiang Mai</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	</div>
-	<div class="col-md-8" id="main_content">
+	<div class="col-md-7" id="main_content">
 		<?php
 		$places = Place::model()->findAll();
 		foreach($places as $place):
