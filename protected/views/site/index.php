@@ -8,7 +8,12 @@ $this->pageTitle=Yii::app()->name;
 	<div class="col-md-6 col-md-offset-3">
 		<div class="row">
 			<div class="col-md-4" id="dropdown_ajax">
-				dropdown
+				<select name="type" id="type" class="form-control">
+					<option value="">Select type ...</option>
+					<option value="temple">Temple</option>
+					<option value="natural">Nature</option>
+					<option value="culture">Culture</option>
+				</select>
 			</div>
 			<div class="col-md-8" id="autocomplete_ajax">
 				<div class="form-group">
