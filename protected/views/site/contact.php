@@ -11,7 +11,7 @@ echo TbHtml::breadcrumbs(array(
 ));
 ?>
 
-<h1>Contact Us</h1>
+autocomplete
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
