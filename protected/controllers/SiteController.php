@@ -106,4 +106,33 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionView($id) {
+		$places = Place::model()->findAllByAttributes(array('id' => $id));
+		$rows = array();
+		foreach($places as $place) {
+			$rows[] = array(
+				'id' => $place->id,
+				'type' => $place->type,
+				'name' => $place->name,
+				'detail' => $place->detail,
+				'pic' => $place->pic,
+				'comments' => $this->getComments($place->id)
+			);
+		}
+		$this->render('view',array('places'=>$places));
+	}
+
+	public function getComments($place_id) {
+		$comments = Comment::model()->findAllByAttributes(array('place_id' => $place_id));
+		$data = array();
+		foreach($comments as $comment) {
+			$data[] = array(
+				'id' => $comment->id,
+				'place_id' => $comment->place_id,
+				'comment_text' => $comment->comment_text
+			);
+		}
+		return $data;
+	}
 }

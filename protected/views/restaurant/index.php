@@ -2,6 +2,7 @@
 /* @var $this RestaurantController */
 
 $this->breadcrumbs=array(
+	'Home' => Yii::app()->baseUrl,
 	'Restaurant',
 );
 ?>

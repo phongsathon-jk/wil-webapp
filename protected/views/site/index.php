@@ -34,12 +34,12 @@ $this->pageTitle=Yii::app()->name;
 			?>
 			<div class="row" id="single_place">
 				<div class="col-md-4">
-					<a href="<?php echo Yii::app()->request->url; ?>view?id=<?php echo $place->id; ?>">
+					<a href="<?php echo Yii::app()->request->url; ?>site/view?id=<?php echo $place->id; ?>">
 						<img class="img-responsive img-thumbnail" src="<?php //echo $place->pic; ?>" alt="<?php echo $place->name; ?>">
 					</a>
 				</div>
 				<div class="col-md-8" id="short_detail">
-					<a href="<?php echo Yii::app()->request->url; ?>view?id=<?php echo $place->id; ?>">
+					<a href="<?php echo Yii::app()->request->url; ?>site/view?id=<?php echo $place->id; ?>">
 						<label><?php echo $place->name; ?></label>
 					</a>
 					<p><?php echo $place->detail; ?></p>
