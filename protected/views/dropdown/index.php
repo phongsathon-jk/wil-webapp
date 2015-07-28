@@ -20,13 +20,13 @@ echo CHtml::beginForm();
             'ajax' => array(
                 'type' => 'GET',
                 'url' => $this->createUrl('dropdown/dynamic'),
-                'update' => '#place_id',
+                'update' => '#tt',
 				//'id' => 'c_id',
             )
         )
     );
-    echo CHtml::label(' Place ', false);
-    echo CHtml::dropDownList('place_id', '', array('' => 'select place'));
+    //echo CHtml::textField('Text','test',array('id'=>'tt','width'=>1000));
+    //echo CHtml::dropDownList('place_id', '', array('' => 'select place'));
 echo CHtml::endForm();
 ?>
 <h1><?php echo $this->id . '/' . $this->action->id; ?></h1>

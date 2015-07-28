@@ -27,10 +27,10 @@ class DropdownController extends Controller
 			
 		   //$rows[] = "ITEM"=>array("place"=>$place->name),"Category"=>array('id'=>$_GET['category_id']);
 			}
-            
+       
            // foreach ($rows as $value) {
-                //echo CHtml::tag('option', array('value' => $value),
-                //CHtml::encode('' . $value), true);
+                //echo CHtml::tag('textField', array('value' => 5555,'id'=>'tt'),
+                //CHtml::encode('' . ''), true);
             //}
 			
 			//array_push($rows,$_GET['category_id']);
