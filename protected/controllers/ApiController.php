@@ -10,37 +10,13 @@ class ApiController extends Controller {
     public function actionList() {
         // get places
         $places = Place::model()->findAll();
-        $rows = array();
-        foreach($places as $place) {
-            $rows[] = array(
-                'id' => $place->id,
-                'type' => $place->type,
-                'name' => $place->name,
-                'detail' => $place->detail,
-                'pic' => $place->pic,
-                'comments' => $this->getComments($place->id)
-            );
-        }
-        // Send the response
-        echo json_encode($rows);
+        $this->getPlaces($places);
     }
 
     public function actionView($id) {
         // get places
         $places = Place::model()->findAllByAttributes(array('id' => $id));
-        $rows = array();
-        foreach($places as $place) {
-            $rows[] = array(
-                'id' => $place->id,
-                'type' => $place->type,
-                'name' => $place->name,
-                'detail' => $place->detail,
-                'pic' => $place->pic,
-                'comments' => $this->getComments($place->id)
-            );
-        }
-        // Send the response
-        echo json_encode($rows);
+        $this->getPlaces($places);
     }
 
     public function actionSearch($keyword) {
@@ -52,6 +28,15 @@ class ApiController extends Controller {
         ) );
 
         $places = Place::model()->findAll($q);
+        $this->getPlaces($places);
+    }
+
+    public function actionType($type){
+        $places = Place::model()->findAllByAttributes(array('type' => $type));
+        $this->getPlaces($places);
+    }
+
+    public function getPlaces($places){
         $rows = array();
         foreach($places as $place) {
             $rows[] = array(
