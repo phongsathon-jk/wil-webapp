@@ -20,11 +20,10 @@ class ApiController extends Controller {
     }
 
     public function actionSearch($keyword) {
-        // get the data
-        $keyword = addcslashes($keyword, '%_'); // escape LIKE's special characters
+        $keyword = addcslashes($keyword, '%_');
         $q = new CDbCriteria( array(
-            'condition' => "name LIKE :keyword",         // no quotes around :match
-            'params'    => array(':keyword' => "%$keyword%")  // Aha! Wildcards go here
+            'condition' => "name LIKE :keyword",
+            'params'    => array(':keyword' => "%$keyword%")
         ) );
 
         $places = Place::model()->findAll($q);
@@ -34,6 +33,22 @@ class ApiController extends Controller {
     public function actionType($type){
         $places = Place::model()->findAllByAttributes(array('type' => $type));
         $this->getPlaces($places);
+    }
+
+    public function actionListName($term) {
+        $term = addcslashes($term, '%_');
+        $q = new CDbCriteria( array(
+            'condition' => "name LIKE :term",
+            'params'    => array(':term' => "%$term%")
+        ) );
+
+        $places = Place::model()->findAll($q);
+        $names = array();
+        foreach($places as $place) {
+            $names[] = $place->name;
+        }
+        echo json_encode($names);
+
     }
 
     public function getPlaces($places){
