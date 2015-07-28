@@ -33,12 +33,8 @@ class SiteController extends Controller
 		// twitter api
 		$connection = new TwitterOAuth("8gpWBVBSfGB2clOm8thLz29yu", "KkSJTv5chO4e6AzGsOkctKnk8nnFjdHzXzISDLM48AZ91gneGG", "3299182320-gipHvZakrdUnQIzfLVP4D5i4uP34vxfqSabxHny", "7D93mzbvVxwujnH20vYbuCPM8LRpZ1vfhCq4LEW5bwGrA");
 		$content = $connection->get("account/verify_credentials");
-		$statuses = $connection->get("search/tweets", array("q" => "chiangmai"));
-		$json = json_encode($statuses);
-
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index', array('twitter' => $json));
+		$tweets = $connection->get("search/tweets", array("q" => "chiangmai"));
+		$this->render('index', array('tweets' => $tweets));
 	}
 
 	/**

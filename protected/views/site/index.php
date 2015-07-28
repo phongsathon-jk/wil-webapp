@@ -22,18 +22,13 @@ $this->pageTitle=Yii::app()->name;
 	</div>
 </div>
 
-<?php
-//echo print_r($twitter);
-echo $twitter;
-//foreach($twitter->statuses as $tw) {
-//	echo "<p>" . $tw->text ."</p>";
-//}
-
-?>
-
 <div class="row">
 	<div class="col-md-3" id="twitter">
-		<strong>Tweets about Chiang Mai</strong>
+		<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/twitter_logo.png" alt="" class="img-center" style="width: 50px; !important;">
+		<?php foreach ($tweets->statuses as $status): ?>
+			<strong><?php echo $status->user->name; ?></strong>
+			<p><?php echo $status->text; ?></p>
+		<?php endforeach; ?>
 	</div>
 	<div class="col-md-7" id="main_content">
 		<?php
