@@ -1,3 +1,12 @@
+#search_option {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#single_place {
+	margin-bottom: 20px;
+}
+
 body
 {
 	margin: 0;

@@ -3,13 +3,46 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+<h1>Attractions in Chiang Mai</h1>
 
-<?php echo TbHtml::beginFormTb(); ?>
-	<fieldset>
-		<legend>Try Yiistrap</legend>
-		<?php echo TbHtml::label('Name', 'text'); ?>
-		<?php echo TbHtml::textField('text', '', array('placeholder' => 'type something')); ?>
-		<?php echo TbHtml::checkBox('checkMe', false, array('label' => 'Check Me')); ?><br>
-		<?php echo TbHtml::submitButton('Submit'); ?>
-	</fieldset>
-<?php echo TbHtml::endForm(); ?>
+<div class="row" id="search_option">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="row">
+			<div class="col-md-6" id="dropdown_ajax">
+				dropdown
+			</div>
+			<div class="col-md-6" id="autocomplete_ajax">
+				autocomplete
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-2" id="twitter">
+		twitter api
+	</div>
+	<div class="col-md-8" id="main_content">
+		<?php
+		$places = Place::model()->findAll();
+		foreach($places as $place):
+		?>
+		<div class="row" id="single_place">
+			<div class="col-md-4">
+				<a href="<?php echo Yii::app()->request->url; ?>view?id=<?php echo $place->id; ?>">
+					<img class="img-responsive img-thumbnail" src="<?php //echo $place->pic; ?>" alt="<?php echo $place->name; ?>">
+				</a>
+			</div>
+			<div class="col-md-8" id="short_detail">
+				<a href="<?php echo Yii::app()->request->url; ?>view?id=<?php echo $place->id; ?>">
+					<label><?php echo $place->name; ?></label>
+				</a>
+				<p><?php echo $place->detail; ?></p>
+			</div>
+		</div>
+		<?php endforeach; ?>
+	</div>
+	<div class="col-md-2" id="weather">
+		weather api
+	</div>
+</div>
