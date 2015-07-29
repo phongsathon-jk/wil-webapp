@@ -240,7 +240,13 @@ background-attachment:fixed}
  margin-bottom: 15px;
 }
 
-
+.bar{
+left: 80px;
+top:50px;
+text-align: left;
+font-size: 2.0em;
+font-color: #000099;
+}
 
 .tb5 {
     border:2px solid #456879;
@@ -261,14 +267,13 @@ font-size: 18px;
 
     top:50px;
   left: 20px;
-    background-color: white;
-                  font-size: 18px;
+    
+                  
                   font-color: #780000 ;
-                opacity: .90;
-                background-color: white;
-                  font-size: 18px;
-                  font-color: #6666FF ;
                 opacity: .70;
+                background-color: white;
+                  font-size: 16px;
+               
                
 }
 /* Services */

@@ -27,19 +27,20 @@
 	<header id="top" class="header">
         <div class="cee">
             <center><h1>SeeM website!</h1>  </center>
-            <center> <h3>CHIANGMAI TRAVEL </h3> </center>
+            
             
 </div>
-            <div>
-            <?php if(isset($this->breadcrumbs)):?>
+            <div class="bar">
+                <center> 
+        <?php if(isset($this->breadcrumbs)):?>
         <?php $this->widget('zii.widgets.CBreadcrumbs', array(
             'links'=>$this->breadcrumbs,
         )); ?><!-- breadcrumbs -->
-    <?php endif?>
-
+        <?php endif?> </div>
+</center>
     <?php echo $content; ?>
             
-        </div>
+       
     </header>
 
 

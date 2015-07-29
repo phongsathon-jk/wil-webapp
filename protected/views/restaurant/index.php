@@ -28,7 +28,7 @@ $this->breadcrumbs=array(
 <h1><center>Top Restaurants in Chiang Mai  <small> powered by <a href="https://foursquare.com/" target="_blank">Foursquare</a></small></h1>
 </center>
 <ul>
-<a href="<?php echo Yii::app()->request->baseUrl; ?>">BACK TO HOME PAGE</a>
+
 		<?php
 foreach ($restaurants->response->groups[0]->items as $restaurant):
 	$coordinate = $restaurant->venue->location->lat . "," . $restaurant->venue->location->lng;

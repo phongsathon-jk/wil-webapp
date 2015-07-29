@@ -1,12 +1,8 @@
- <div class="col-md-6 col-md-offset-3">
-    <?php
-$place = $places[0];
-$this->breadcrumbs=array(
-'Home' => Yii::app()->baseUrl,$place->name,);?>
-    <?php
-    $this->pageTitle=Yii::app()->name;
-    ?>
-</div>
+
+<?php $place = $places[0];
+$this->breadcrumbs=array('Home' => Yii::app()->baseUrl,$place->name,);?>
+<?php $this->pageTitle=Yii::app()->name; ?>
+  </center>
     <head>
 
         <meta charset="utf-8">
@@ -31,7 +27,6 @@ $this->breadcrumbs=array(
     </head>
 
     <div class="col-md-8 col-md-offset-2 contentview ">
-        <a href="<?php echo Yii::app()->request->baseUrl; ?>">HOME PAGE</a>
         <h1 style="text-align: center;"><?php echo $place->name; ?></h1>
         <center><img class="img-responsive img-rounded img-center" src="<?php echo $place->pic; ?>" alt="<?php echo $place->name; ?>" style="width: 500px; !important;"></center>
         <br>
