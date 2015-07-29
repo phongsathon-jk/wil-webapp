@@ -27,7 +27,7 @@
 	<header id="top" class="header">
         <div class="cee">
             <center><h1>SeeM website!</h1>  </center>
-            <center> <h3>CHIANGMAI TRAVEL &amp; </h3> </center>
+            <center> <h3>CHIANGMAI TRAVEL </h3> </center>
             
 </div>
             <div>

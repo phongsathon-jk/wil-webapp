@@ -152,6 +152,9 @@ hr.small {
     right: 0;
 }
 
+
+
+
 #sidebar-wrapper.active {
     right: 250px;
     width: 250px;
@@ -163,9 +166,53 @@ hr.small {
 }
 
 .toggle {
-    margin: 5px 5px 0 0;
+    
+
+}
+.serchbox{
+ position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #4f5b66;
+   left: 60px;
+
+}
+.middle{
+  top: 40%;
+
 }
 
+.list-group{
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 0.8em;
+font-color: #000099;
+
+
+}
+.we{
+    top:80px;
+     left: 80px;
+     
+      opacity: .90;
+       font-size: 18px;
+                  font-color: #780000 ;
+}
+.we1{
+    background-color: white;
+}
+.we2{
+    background-color: #CC99FF;
+    
+}
+.we3{
+    background-color: #CC33FF;
+
+}
+.we4{
+    background-color: #CC33FF;
+}
 /* Header */
 
 .header {
@@ -186,70 +233,67 @@ background-attachment:fixed}
 
 /* About */
 
-.content2{
- background-color: white;
-                  font-size: 18px;
-                  font-color: #780000 ;
-                opacity: .70;
-                text-align: center;
 
-}
-
-.contentt{
-background-color: white;
-                  font-size: 18px;
-                  font-color: #780000 ;
-                opacity: .70;
-                text-align: center;
-
-                position:fixed;
-top:50%;
-left:50%;
-margin-left:-100px;
-margin-top:-50px;
-
-}
 .about {
-    padding: 50px 0;
+     top:50px;
      text-align: justify;
-   
-                height: 100px;
-                margin-bottom: 15px;
+ margin-bottom: 15px;
 }
+
+
+
 .tb5 {
     border:2px solid #456879;
     border-radius:10px;
     height: 45px;
     width: 230px;
 }
+.contentview{
+background-color: white;
+font-size: 18px;
+
+}
+.contentview2{
+    font-size: 22px;
+    font-color: #580000;
+}
 .content{
+
+    top:50px;
+  left: 20px;
     background-color: white;
                   font-size: 18px;
                   font-color: #780000 ;
-                opacity: .80;
+                opacity: .90;
+                background-color: white;
+                  font-size: 18px;
+                  font-color: #6666FF ;
+                opacity: .70;
+               
 }
 /* Services */
 
 .services {
-    padding: 50px 0;
+   
 }
 
 .service-item {
+    top: 50px;
+    left: 30px;
     margin-bottom: 30px;
 }
 
 /* Callout */
 
 .callout {
-    display: table;
-    width: 100%;
-    height: 400px;
-    color: #fff;
-    background: url(../img/callout.jpg) no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+   
+ top:50px;
+  left: 10px;
+  width: 300px;
+   background-color: #FFFFFF;
+   font-color: #FFFFFF;
+   opacity: .80;
+   
 }
 
 /* Portfolio */
