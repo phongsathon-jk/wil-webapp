@@ -1,6 +1,19 @@
 $(document).ready(function () {
     $('#search_keyword').autocomplete({
-        source: '/wil_webapp/api/listname',
+        source: function(request, response) {
+            $.ajax({
+                url: 'api/listname',
+                type: 'GET',
+                data: {
+                    type: $('select#type').val(),
+                    term: request.term
+                },
+                dataType: 'json',
+                success: function (data) {
+                    response(data);
+                }
+            });
+        },
         select: function(event, ui) {
             searchPlace(ui.item.label);
         }

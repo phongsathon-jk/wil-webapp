@@ -35,20 +35,24 @@ class ApiController extends Controller {
         $this->getPlaces($places);
     }
 
-    public function actionListName($term) {
+    public function actionListName($type, $term) {
         $term = addcslashes($term, '%_');
-        $q = new CDbCriteria( array(
-            'condition' => "name LIKE :term",
-            'params'    => array(':term' => "%$term%")
-        ) );
+        $criteria = new CDbCriteria();
+        if(strlen($type) == 0) {
+            $criteria->condition = "name LIKE :term";
+            $criteria->params = array(':term' => "%$term%");
+        } else {
+            $criteria->condition = "name LIKE :term AND type=:type";
+            $criteria->params = array(':term' => "%$term%", ':type' => $type);
+        }
+        $criteria->select = "name";
 
-        $places = Place::model()->findAll($q);
+        $places = Place::model()->findAll($criteria);
         $names = array();
         foreach($places as $place) {
             $names[] = $place->name;
         }
         echo json_encode($names);
-
     }
 
     public function getPlaces($places){
