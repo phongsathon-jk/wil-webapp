@@ -42,7 +42,6 @@
 	</div>
 	<div class="col-md-7" id="main_content">
 		<?php
-		$places = Place::model()->findAll();
 		foreach($places as $place):
 			?>
 			<div class="row" id="single_place">
