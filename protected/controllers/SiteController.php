@@ -36,7 +36,11 @@ class SiteController extends Controller
 		$connection = new TwitterOAuth("8gpWBVBSfGB2clOm8thLz29yu", "KkSJTv5chO4e6AzGsOkctKnk8nnFjdHzXzISDLM48AZ91gneGG", "3299182320-gipHvZakrdUnQIzfLVP4D5i4uP34vxfqSabxHny", "7D93mzbvVxwujnH20vYbuCPM8LRpZ1vfhCq4LEW5bwGrA");
 		$content = $connection->get("account/verify_credentials");
 		$tweets = $connection->get("search/tweets", array("q" => "chiangmai"));
-		$this->render('index', array('places' => $places,'tweets' => $tweets));
+
+		//weather
+		$weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=chiangmai&units=metric"));
+
+		$this->render('index', array('places' => $places,'tweets' => $tweets, 'weather' => $weather));
 	}
 
 	/**

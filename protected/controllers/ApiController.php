@@ -99,6 +99,5 @@ class ApiController extends Controller {
         if($newComment->save()) {
             echo json_encode($arr);
         }
-
     }
 }
