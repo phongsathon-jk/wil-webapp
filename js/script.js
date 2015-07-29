@@ -1,19 +1,6 @@
 $(document).ready(function () {
     $('#search_keyword').autocomplete({
-        source: function(request, response) {
-            $.ajax({
-                url: 'api/listname',
-                type: 'GET',
-                data: {
-                    type: $('select#type').val(),
-                    term: request.term
-                },
-                dataType: 'json',
-                success: function (data) {
-                    response(data);
-                }
-            });
-        },
+        source: '/wil_webapp/api/listname',
         select: function(event, ui) {
             searchPlace(ui.item.label);
         }
@@ -21,7 +8,7 @@ $(document).ready(function () {
 
     $('select#type').on('change', function() {
         searchType($(this).val());
-		sendData($(this).val());
+		//sendData($(this).val());
     });
 
     $('button#new_comment').click(function() {
@@ -55,17 +42,14 @@ $(document).ready(function () {
             $('#main_content').empty();
 			
             $.each(data, function(key, value) {
-<<<<<<< HEAD
 				
-=======
->>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
                 $('#main_content').append('<div class="row" id="single_place"><div class="col-md-4"><a href="site/view?id='+value.id+'"><img class="img-responsive img-thumbnail" src="'+value.pic+'" alt="'+value.name+'"></a></div><div class="col-md-8"><a href="site/view?id='+value.id+'"><label>'+value.name+'</label></a><p>'+value.detail+'</p></div></div>');
             });
         });			
     }
 	function sendData(type){
 		//var type_p=$('select#type').val();  /wil_webapp/protected/controllers /wil_webapp/js/test.php
-		$.post("/wil_webapp/api/listname",{
+		$.post("/wil_webapp/protected/controllers/ApiController.php",{
 			p_type: type
 		}).done(function(data) {
 			alert(type);
