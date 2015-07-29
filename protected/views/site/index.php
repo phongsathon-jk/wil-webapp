@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-md-4" id="dropdown_ajax">
 				<select name="type" id="type" class="form-control">
-					<option value="">Select type ...</option>
+					<option value="">Select category ...</option>
 					<option value="temple">Temple</option>
 					<option value="natural">Nature</option>
 					<option value="culture">Culture</option>
@@ -64,7 +64,7 @@
 		<?php
 		$weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=chiangmai&units=metric"));
 		?>
-		<img src="http://openweathermap.org/img/w/<?php echo $weather->weather[0]->icon; ?>.png" alt="<?php echo $weather->weather[0]->main; ?>">
+		<img class="img-center" src="http://openweathermap.org/img/w/<?php echo $weather->weather[0]->icon; ?>.png" alt="<?php echo $weather->weather[0]->main; ?>">
 		<p>Condition: <?php echo $weather->weather[0]->main; ?></p>
 		<p>Temperature: <?php echo $weather->main->temp; ?> &#8451;</p>
 		<p>Min. Temp: <?php echo $weather->main->temp_min; ?> &#8451;</p>
