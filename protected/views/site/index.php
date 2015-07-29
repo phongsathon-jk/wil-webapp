@@ -3,7 +3,31 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-<h1>Attractions in Chiang Mai</h1>
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SeeM</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<div class="center">
+<h1><center>Attractions in Chiang Mai</center></h1>
 <div class="row" id="search_option">
 	<div class="col-md-6 col-md-offset-3">
 		<div class="row">
@@ -17,14 +41,14 @@ $this->pageTitle=Yii::app()->name;
 			</div>
 			<div class="col-md-8" id="autocomplete_ajax">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="keyword" name="search_keyword" id="search_keyword">
+					<input type="text" class="tb5" placeholder="keyword" name="search_keyword" id="search_keyword">
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12" style="text-align: center;">
+		<div class="row ">
+			<div class="col-md-12 aa" style="text-align: center;">
 				<a href="<?php echo Yii::app()->request->url; ?>restaurant">check-out the restaurants</a>
-			</div>
+			</div> 
 		</div>
 	</div>
 </div>
@@ -43,12 +67,12 @@ $this->pageTitle=Yii::app()->name;
 		foreach($places as $place):
 			?>
 			<div class="row" id="single_place">
-				<div class="col-md-4">
+				<div class="col-md-4 about">
 					<a href="<?php echo Yii::app()->request->url; ?>site/view?id=<?php echo $place->id; ?>">
 						<img class="img-responsive img-thumbnail" src="<?php //echo $place->pic; ?>" alt="<?php echo $place->name; ?>">
 					</a>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 content">
 					<a href="<?php echo Yii::app()->request->url; ?>site/view?id=<?php echo $place->id; ?>">
 						<label><?php echo $place->name; ?></label>
 					</a>
