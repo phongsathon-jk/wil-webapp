@@ -37,6 +37,7 @@ class SiteController extends Controller
 		$tweets = $connection->get("search/tweets", array("q" => "chiangmai"));
 		$this->render('index', array('tweets' => $tweets));
 
+<<<<<<< HEAD
 //		$this->render('index');
 =======
 		$places = Place::model()->findAll();
@@ -47,6 +48,8 @@ class SiteController extends Controller
 		$tweets = $connection->get("search/tweets", array("q" => "chiangmai"));
 		$this->render('index', array('places' => $places,'tweets' => $tweets));
 >>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
+=======
+>>>>>>> fdc68eeea77251faa01e27b4db09a9ca6dbdf4cd
 	}
 
 	/**

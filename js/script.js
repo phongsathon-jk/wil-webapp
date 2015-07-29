@@ -56,9 +56,12 @@ $(document).ready(function () {
 			
             $.each(data, function(key, value) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				
 =======
 >>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
+=======
+>>>>>>> fdc68eeea77251faa01e27b4db09a9ca6dbdf4cd
                 $('#main_content').append('<div class="row" id="single_place"><div class="col-md-4"><a href="site/view?id='+value.id+'"><img class="img-responsive img-thumbnail" src="'+value.pic+'" alt="'+value.name+'"></a></div><div class="col-md-8"><a href="site/view?id='+value.id+'"><label>'+value.name+'</label></a><p>'+value.detail+'</p></div></div>');
             });
         });			
