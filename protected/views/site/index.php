@@ -1,15 +1,22 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
+//$this->pageTitle=Yii::app()->name;
 ?>
-<h1>Attractions in Chiang Mai</h1>
+<div class="container" style="margin-bottom: 20px;">
+	<h1>Attractions in Chiang Mai</h1>
+</div>
+
 <div class="row" id="search_option">
 	<div class="col-md-6 col-md-offset-3">
 		<div class="row">
 			<div class="col-md-4" id="dropdown_ajax">
 				<select name="type" id="type" class="form-control">
+<<<<<<< HEAD
 					<option value="default">Select type ...</option>
+=======
+					<option value="">Select category ...</option>
+>>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
 					<option value="temple">Temple</option>
 					<option value="natural">Nature</option>
 					<option value="culture">Culture</option>
@@ -33,13 +40,18 @@ $this->pageTitle=Yii::app()->name;
 	<div class="col-md-3" id="twitter">
 		<img src="<?php echo Yii::app()->request->baseUrl; ?>/img/twitter_logo.png" alt="" class="img-center" style="width: 50px; !important;">
 		<?php foreach ($tweets->statuses as $status): ?>
+<<<<<<< HEAD
 					<label><?php echo $status->user->name; ?></label>
 					<p><?php echo $status->text; ?></p>
 				<?php endforeach; ?>
+=======
+			<label><?php echo $status->user->name; ?></label>
+			<p><?php echo $status->text; ?></p>
+		<?php endforeach; ?>
+>>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
 	</div>
 	<div class="col-md-7" id="main_content">
 		<?php
-		$places = Place::model()->findAll();
 		foreach($places as $place):
 			?>
 			<div class="row" id="single_place">
@@ -59,6 +71,7 @@ $this->pageTitle=Yii::app()->name;
 	</div>
 	<div class="col-md-2" id="weather">
 		<?php
+<<<<<<< HEAD
 				$weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=chiangmai&units=metric"));
 				?>
 				<img src="http://openweathermap.org/img/w/<?php echo $weather->weather[0]->icon; ?>.png" alt="<?php echo $weather->weather[0]->main; ?>">
@@ -66,5 +79,14 @@ $this->pageTitle=Yii::app()->name;
 				<p>Temperature: <?php echo $weather->main->temp; ?> &#8451;</p>
 				<p>Min. Temp: <?php echo $weather->main->temp_min; ?>< &#8451;</p>
 				<p>Max. Temp: <?php echo $weather->main->temp_max; ?> &#8451;</p>
+=======
+		$weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=chiangmai&units=metric"));
+		?>
+		<img class="img-center" src="http://openweathermap.org/img/w/<?php echo $weather->weather[0]->icon; ?>.png" alt="<?php echo $weather->weather[0]->main; ?>">
+		<p>Condition: <?php echo $weather->weather[0]->main; ?></p>
+		<p>Temperature: <?php echo $weather->main->temp; ?> &#8451;</p>
+		<p>Min. Temp: <?php echo $weather->main->temp_min; ?> &#8451;</p>
+		<p>Max. Temp: <?php echo $weather->main->temp_max; ?> &#8451;</p>
+>>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
 	</div>
 </div>

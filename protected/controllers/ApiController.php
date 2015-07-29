@@ -43,6 +43,7 @@ class ApiController extends Controller {
 		
     }
 
+<<<<<<< HEAD
     public function actionListName($term) {
 		if(isset($_POST['name'])){
 			
@@ -54,15 +55,31 @@ class ApiController extends Controller {
             'condition' => "name LIKE :term",
             'params'    => array(':term' => "%$term%")
         ) );
+=======
+    public function actionListName($type, $term) {
+        $term = addcslashes($term, '%_');
+        $criteria = new CDbCriteria();
+        if(strlen($type) == 0) {
+            $criteria->condition = "name LIKE :term";
+            $criteria->params = array(':term' => "%$term%");
+        } else {
+            $criteria->condition = "name LIKE :term AND type=:type";
+            $criteria->params = array(':term' => "%$term%", ':type' => $type);
+        }
+        $criteria->select = "name";
+>>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
 
-        $places = Place::model()->findAll($q);
+        $places = Place::model()->findAll($criteria);
         $names = array();
 		
         foreach($places as $place) {
             $names[] = $place->name;
         }
         echo json_encode($names);
+<<<<<<< HEAD
 		}
+=======
+>>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
     }
 
     public function getPlaces($places){
