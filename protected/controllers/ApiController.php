@@ -1,7 +1,7 @@
 <?php
 
 class ApiController extends Controller {
-
+	
     public function filters() {
         return array();
     }
@@ -20,6 +20,7 @@ class ApiController extends Controller {
     }
 
     public function actionSearch($keyword) {
+		
         $keyword = addcslashes($keyword, '%_');
         $q = new CDbCriteria( array(
             'condition' => "name LIKE :keyword",
@@ -31,12 +32,24 @@ class ApiController extends Controller {
     }
 
     public function actionType($type){
-        $places = Place::model()->findAllByAttributes(array('type' => $type));
+		
+		if($type=='default'){
+			 $places = Place::model()->findAll();
+		}else{
+			$places = Place::model()->findAllByAttributes(array('type' => $type));
+		}
+        
         $this->getPlaces($places);
+		
     }
 
     public function actionListName($term) {
-        $term = addcslashes($term, '%_');
+		if(isset($_POST['name'])){
+			
+		
+        
+		}else{
+			$term = addcslashes($term, '%_');
         $q = new CDbCriteria( array(
             'condition' => "name LIKE :term",
             'params'    => array(':term' => "%$term%")
@@ -44,11 +57,12 @@ class ApiController extends Controller {
 
         $places = Place::model()->findAll($q);
         $names = array();
+		
         foreach($places as $place) {
             $names[] = $place->name;
         }
         echo json_encode($names);
-
+		}
     }
 
     public function getPlaces($places){
@@ -98,3 +112,4 @@ class ApiController extends Controller {
 
     }
 }
+?>
