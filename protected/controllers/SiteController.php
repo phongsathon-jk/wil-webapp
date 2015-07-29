@@ -30,26 +30,17 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-<<<<<<< HEAD
-		// twitter api
-		$connection = new TwitterOAuth("8gpWBVBSfGB2clOm8thLz29yu", "KkSJTv5chO4e6AzGsOkctKnk8nnFjdHzXzISDLM48AZ91gneGG", "3299182320-gipHvZakrdUnQIzfLVP4D5i4uP34vxfqSabxHny", "7D93mzbvVxwujnH20vYbuCPM8LRpZ1vfhCq4LEW5bwGrA");
-		$content = $connection->get("account/verify_credentials");
-		$tweets = $connection->get("search/tweets", array("q" => "chiangmai"));
-		$this->render('index', array('tweets' => $tweets));
-
-<<<<<<< HEAD
-//		$this->render('index');
-=======
 		$places = Place::model()->findAll();
 
 		// twitter api
 		$connection = new TwitterOAuth("8gpWBVBSfGB2clOm8thLz29yu", "KkSJTv5chO4e6AzGsOkctKnk8nnFjdHzXzISDLM48AZ91gneGG", "3299182320-gipHvZakrdUnQIzfLVP4D5i4uP34vxfqSabxHny", "7D93mzbvVxwujnH20vYbuCPM8LRpZ1vfhCq4LEW5bwGrA");
 		$content = $connection->get("account/verify_credentials");
 		$tweets = $connection->get("search/tweets", array("q" => "chiangmai"));
-		$this->render('index', array('places' => $places,'tweets' => $tweets));
->>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
-=======
->>>>>>> fdc68eeea77251faa01e27b4db09a9ca6dbdf4cd
+
+		//weather
+		$weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=chiangmai&units=metric"));
+
+		$this->render('index', array('places' => $places,'tweets' => $tweets, 'weather' => $weather));
 	}
 
 	/**

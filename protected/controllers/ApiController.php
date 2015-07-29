@@ -1,7 +1,7 @@
 <?php
 
 class ApiController extends Controller {
-	
+
     public function filters() {
         return array();
     }
@@ -20,7 +20,6 @@ class ApiController extends Controller {
     }
 
     public function actionSearch($keyword) {
-		
         $keyword = addcslashes($keyword, '%_');
         $q = new CDbCriteria( array(
             'condition' => "name LIKE :keyword",
@@ -32,30 +31,10 @@ class ApiController extends Controller {
     }
 
     public function actionType($type){
-		
-		if($type=='default'){
-			 $places = Place::model()->findAll();
-		}else{
-			$places = Place::model()->findAllByAttributes(array('type' => $type));
-		}
-        
+        $places = Place::model()->findAllByAttributes(array('type' => $type));
         $this->getPlaces($places);
-		
     }
 
-<<<<<<< HEAD
-    public function actionListName($term) {
-		if(isset($_POST['name'])){
-			
-		
-        
-		}else{
-			$term = addcslashes($term, '%_');
-        $q = new CDbCriteria( array(
-            'condition' => "name LIKE :term",
-            'params'    => array(':term' => "%$term%")
-        ) );
-=======
     public function actionListName($type, $term) {
         $term = addcslashes($term, '%_');
         $criteria = new CDbCriteria();
@@ -67,19 +46,13 @@ class ApiController extends Controller {
             $criteria->params = array(':term' => "%$term%", ':type' => $type);
         }
         $criteria->select = "name";
->>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
 
         $places = Place::model()->findAll($criteria);
         $names = array();
-		
         foreach($places as $place) {
             $names[] = $place->name;
         }
         echo json_encode($names);
-<<<<<<< HEAD
-		}
-=======
->>>>>>> 6144c321f82366de2540e5e5a9e34428054de5fb
     }
 
     public function getPlaces($places){
@@ -126,7 +99,5 @@ class ApiController extends Controller {
         if($newComment->save()) {
             echo json_encode($arr);
         }
-
     }
 }
-?>
