@@ -21,7 +21,7 @@
 </head>
 
 <body>
-
+<div class="fakeloader"></div>
 <div class="container" id="page">
 <!---->
 <!--	<div id="header">-->
@@ -60,5 +60,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/script.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/fakeLoader.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/custom_fakeloader.js"></script>
 </body>
 </html>
