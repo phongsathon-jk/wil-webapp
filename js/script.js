@@ -38,7 +38,7 @@ $(document).ready(function () {
         }).done(function(data) {                    // action after retrieved data
             $('#main_content').empty();             // clear the result section
             $.each(data, function(key, value) {     // loop through the result and display each place
-                $('#main_content').append('<div class="row" id="single_place"><div class="col-md-4"><a href="site/view?id='+value.id+'"><img class="img-responsive img-thumbnail" src="'+value.pic+'" alt="'+value.name+'"></a></div><div class="col-md-8"><a href="site/view?id='+value.id+'"><label>'+value.name+'</label></a><p>'+value.detail+'</p></div></div>');
+                $('#main_content').append('<div class="row single_place"><div class="col-md-4"><a href="site/view?id='+value.id+'"><img class="img-responsive img-thumbnail" src="'+value.pic+'" alt="'+value.name+'"></a></div><div class="col-md-8"><a href="site/view?id='+value.id+'"><label class="place_name">'+value.name+'</label></a><p>'+value.detail+'</p></div></div>');
             });
         });
     }
@@ -52,7 +52,7 @@ $(document).ready(function () {
         }).done(function(data) {                    // action after retrieved data
             $('#main_content').empty();             // clear the result section
             $.each(data, function(key, value) {     // loop through the result and display each place
-                $('#main_content').append('<div class="row" id="single_place"><div class="col-md-4"><a href="site/view?id='+value.id+'"><img class="img-responsive img-thumbnail" src="'+value.pic+'" alt="'+value.name+'"></a></div><div class="col-md-8"><a href="site/view?id='+value.id+'"><label>'+value.name+'</label></a><p>'+value.detail+'</p></div></div>');
+                $('#main_content').append('<div class="row single_place"><div class="col-md-4"><a href="site/view?id='+value.id+'"><img class="img-responsive img-thumbnail" src="'+value.pic+'" alt="'+value.name+'"></a></div><div class="col-md-8"><a href="site/view?id='+value.id+'"><label class="place_name">'+value.name+'</label></a><p>'+value.detail+'</p></div></div>');
             });
         });
     }

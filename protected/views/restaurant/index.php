@@ -4,9 +4,8 @@ $this->breadcrumbs=array(
     'Restaurant',
 );
 ?>
-<div class="container">
-    <div class="contentview">
-        <h1>Top Restaurants in Chiang Mai <small>powered by <a href="https://foursquare.com/" target="_blank">Foursquare</a></small></h1>
+<div class="container single_place">
+        <h2>Top Restaurants in Chiang Mai <small>powered by <a href="https://foursquare.com/" target="_blank">Foursquare</a></small></h2>
         <ul>
             <?php
             foreach ($restaurants->response->groups[0]->items as $restaurant):
@@ -20,5 +19,4 @@ $this->breadcrumbs=array(
             <?php endforeach; ?>
         </ul>
     </div>
-</div>
 
