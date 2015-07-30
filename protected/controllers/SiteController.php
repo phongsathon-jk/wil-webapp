@@ -1,5 +1,6 @@
 <?php
 
+// load twitter authentication
 require "vendor/autoload.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
@@ -30,16 +31,21 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		// get all places from db
 		$places = Place::model()->findAll();
 
-		// twitter api
+		// *** twitter api *** //
+		//twitter authentication
 		$connection = new TwitterOAuth("8gpWBVBSfGB2clOm8thLz29yu", "KkSJTv5chO4e6AzGsOkctKnk8nnFjdHzXzISDLM48AZ91gneGG", "3299182320-gipHvZakrdUnQIzfLVP4D5i4uP34vxfqSabxHny", "7D93mzbvVxwujnH20vYbuCPM8LRpZ1vfhCq4LEW5bwGrA");
 		$content = $connection->get("account/verify_credentials");
+		// search tweets
 		$tweets = $connection->get("search/tweets", array("q" => "chiangmai"));
+		// *** end twitter api *** //
 
-		//weather
+		// weather api
 		$weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=chiangmai&units=metric"));
 
+		// render index page and pass places, tweets, and weather
 		$this->render('index', array('places' => $places,'tweets' => $tweets, 'weather' => $weather));
 	}
 
@@ -55,32 +61,6 @@ class SiteController extends Controller
 			else
 				$this->render('error', $error);
 		}
-	}
-
-	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-Type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
 	}
 
 	/**
@@ -118,8 +98,12 @@ class SiteController extends Controller
 		$this->redirect(Yii::app()->homeUrl);
 	}
 
-	public function actionView($id) {
+	// view a single place
+	public function actionView($id) {		// require a place id as param
+		// retrieve a place from db using the id
 		$places = Place::model()->findAllByAttributes(array('id' => $id));
+
+		// organise place object into an array
 		$rows = array();
 		foreach($places as $place) {
 			$rows[] = array(
@@ -128,14 +112,20 @@ class SiteController extends Controller
 				'name' => $place->name,
 				'detail' => $place->detail,
 				'pic' => $place->pic,
-				'comments' => $this->getComments($place->id)
+				'comments' => $this->getComments($place->id)	// retrieve this place's comments
 			);
 		}
+
+		// render view a place page with a place info
 		$this->render('view',array('places'=>$places));
 	}
 
-	public function getComments($place_id) {
+	// retrieve a place's comments
+	public function getComments($place_id) {	// require a place id
+		// retrieve the comment of this place
 		$comments = Comment::model()->findAllByAttributes(array('place_id' => $place_id));
+
+		// organise the comments into an array
 		$data = array();
 		foreach($comments as $comment) {
 			$data[] = array(
