@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#search_keyword').autocomplete({             // display list of places' name as typing
+    $('#search_keyword').autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: 'api/listname',
