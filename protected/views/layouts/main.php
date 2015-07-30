@@ -17,7 +17,9 @@
 </head>
 
 <body>
+<!-- div for page loading animation -->
 <div class="fakeloader"></div>
+<!-- -->
 <div class="container" id="page">
     <header id="top" class="header">
         <div class="cee">
