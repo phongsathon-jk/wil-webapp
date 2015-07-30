@@ -28,6 +28,7 @@ class SiteController extends Controller
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
+	//display index page with tweeter api and weather api
 	public function actionIndex()
 	{
 		$places = Place::model()->findAll();
@@ -46,6 +47,7 @@ class SiteController extends Controller
 	/**
 	 * This is the action to handle external exceptions.
 	 */
+	 //handle the error
 	public function actionError()
 	{
 		if($error=Yii::app()->errorHandler->error)
@@ -60,6 +62,7 @@ class SiteController extends Controller
 	/**
 	 * Displays the contact page
 	 */
+	//display contact form 
 	public function actionContact()
 	{
 		$model=new ContactForm;
@@ -112,12 +115,13 @@ class SiteController extends Controller
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
+	 //Logout
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-
+	//display view page 
 	public function actionView($id) {
 		$places = Place::model()->findAllByAttributes(array('id' => $id));
 		$rows = array();
@@ -133,7 +137,7 @@ class SiteController extends Controller
 		}
 		$this->render('view',array('places'=>$places));
 	}
-
+	//get comment of any place 
 	public function getComments($place_id) {
 		$comments = Comment::model()->findAllByAttributes(array('place_id' => $place_id));
 		$data = array();
